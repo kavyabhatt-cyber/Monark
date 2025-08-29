@@ -1,0 +1,1680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monark Astrology - Your Cosmic Journey Awaits</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #1a0033 0%, #330066 25%, #4d0080 50%, #660099 75%, #8000cc 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        /* Mystical Background Effects */
+        .cosmic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+        .floating-symbol {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.1;
+            animation: float 8s ease-in-out infinite;
+            color: #ffd700;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.1; }
+            50% { transform: translateY(-30px) rotate(180deg); opacity: 0.3; }
+        }
+        .mystical-orb {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.3), transparent);
+            animation: pulse 4s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.2); opacity: 0.6; }
+        }
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 0, 51, 0.95);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ffd700;
+            text-decoration: none;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            position: relative;
+        }
+        .nav-links a:hover {
+            color: #ffd700;
+            text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(45deg, #ffd700, #ff6b9d);
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        .hero-content {
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ffd700, #ff6b9d, #8000cc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 3s ease-in-out infinite alternate;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+        }
+        @keyframes glow {
+            from { filter: brightness(1); }
+            to { filter: brightness(1.3); }
+        }
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            font-style: italic;
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 2.5rem;
+            background: linear-gradient(45deg, #ffd700, #ff6b9d);
+            color: #1a0033;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.6);
+        }
+        /* Zodiac Wheel */
+        .zodiac-wheel {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            margin: 3rem auto;
+            border-radius: 50%;
+            border: 3px solid rgba(255, 215, 0, 0.5);
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.1), transparent);
+            animation: rotate 60s linear infinite;
+        }
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .zodiac-sign {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(255, 215, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+        }
+        .zodiac-sign:hover {
+            background: rgba(255, 215, 0, 0.4);
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+        }
+        /* Section Styling */
+        .section {
+            padding: 5rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+        .section h2 {
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #ffd700;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+        /* Horoscope Cards */
+        .horoscope-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .horoscope-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .horoscope-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+            opacity: 0;
+        }
+        .horoscope-card:hover::before {
+            opacity: 1;
+            animation: shimmer 1.5s ease-in-out;
+        }
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+        .horoscope-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255, 215, 0, 0.3);
+            border-color: #ffd700;
+        }
+        .horoscope-card h3 {
+            color: #ffd700;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .horoscope-card .sign-emoji {
+            font-size: 2rem;
+        }
+        .horoscope-dates {
+            color: #ff6b9d;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+        .horoscope-text {
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        .lucky-info {
+            background: rgba(255, 215, 0, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            border-left: 4px solid #ffd700;
+        }
+        .lucky-info h4 {
+            color: #ffd700;
+            margin-bottom: 0.5rem;
+        }
+        /* Birth Chart Calculator */
+        .birth-chart-container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 3rem;
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #ffd700;
+            font-weight: bold;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            font-size: 1rem;
+            backdrop-filter: blur(10px);
+        }
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: #ffd700;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+        .mystical-button {
+            width: 100%;
+            padding: 1.2rem;
+            background: linear-gradient(45deg, #ffd700, #ff6b9d);
+            color: #1a0033;
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .mystical-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
+        }
+        .chart-result {
+            margin-top: 2rem;
+            padding: 2rem;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 15px;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            min-height: 100px;
+            display: none;
+        }
+        /* Tarot Cards */
+        .tarot-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+        .tarot-card {
+            width: 120px;
+            height: 200px;
+            background: linear-gradient(135deg, #1a0033, #4d0080);
+            border: 3px solid #ffd700;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+        .tarot-card:hover {
+            transform: translateY(-10px) rotateY(10deg);
+            box-shadow: 0 15px 30px rgba(255, 215, 0, 0.4);
+        }
+        .tarot-card.flipped {
+            background: linear-gradient(135deg, #ffd700, #ff6b9d);
+            color: #1a0033;
+        }
+        .tarot-reading {
+            margin-top: 2rem;
+            padding: 2rem;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 15px;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            text-align: center;
+            display: none;
+        }
+        /* Crystal Ball */
+        .crystal-ball {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(255, 215, 0, 0.3), rgba(128, 0, 204, 0.6));
+            margin: 2rem auto;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        .crystal-ball::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            left: 25%;
+            width: 30%;
+            height: 30%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.9), transparent);
+            border-radius: 50%;
+            animation: sparkle 2s ease-in-out infinite;
+        }
+        @keyframes sparkle {
+            0%, 100% { opacity: 0.7; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+        .crystal-ball:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 50px rgba(255, 215, 0, 0.8);
+        }
+        .prediction-text {
+            margin-top: 2rem;
+            padding: 2rem;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 15px;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            text-align: center;
+            font-style: italic;
+            font-size: 1.2rem;
+            display: none;
+        }
+        /* Planetary Positions */
+        .planetary-system {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            margin: 2rem auto;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+        }
+        .planet {
+            position: absolute;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .planet:hover {
+            transform: scale(1.2);
+            box-shadow: 0 0 20px currentColor;
+        }
+        .sun { width: 40px; height: 40px; background: #ffeb3b; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+        .mercury { width: 8px; height: 8px; background: #8c7853; }
+        .venus { width: 12px; height: 12px; background: #ffc649; }
+        .earth { width: 14px; height: 14px; background: #6b93d6; }
+        .mars { width: 10px; height: 10px; background: #c1440e; }
+        .jupiter { width: 24px; height: 24px; background: #d8ca9d; }
+        .saturn { width: 20px; height: 20px; background: #fad5a5; }
+        .orbit {
+            position: absolute;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .orbit-1 { width: 80px; height: 80px; }
+        .orbit-2 { width: 120px; height: 120px; }
+        .orbit-3 { width: 160px; height: 160px; }
+        .orbit-4 { width: 200px; height: 200px; }
+        .orbit-5 { width: 280px; height: 280px; }
+        .orbit-6 { width: 340px; height: 340px; }
+        /* Numerology Calculator */
+        .numerology-container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 3rem;
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .numerology-result {
+            margin-top: 2rem;
+            padding: 2rem;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 15px;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            display: none;
+        }
+        .life-path-number {
+            font-size: 4rem;
+            color: #ffd700;
+            text-align: center;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2.5rem; }
+            .zodiac-wheel { width: 300px; height: 300px; }
+            .tarot-container { gap: 1rem; }
+            .tarot-card { width: 100px; height: 160px; }
+            .planetary-system { width: 300px; height: 300px; }
+            .crystal-ball { width: 150px; height: 150px; }
+        }
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border: 3px solid rgba(255, 215, 0, 0.3);
+            border-radius: 50%;
+            border-top-color: #ffd700;
+            animation: spin 1s ease-in-out infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        /* Footer */
+        .footer {
+            background: rgba(26, 0, 51, 0.95);
+            padding: 3rem 0 1rem;
+            margin-top: 5rem;
+            border-top: 2px solid rgba(255, 215, 0, 0.3);
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            color: #ffd700;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer-links a:hover {
+            color: #ff6b9d;
+        }
+        /* Mystical Text Effects */
+        .mystical-text {
+            background: linear-gradient(45deg, #ffd700, #ff6b9d, #8000cc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: textShimmer 3s ease-in-out infinite;
+        }
+        @keyframes textShimmer {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        /* Social Media Styles */
+        .social-media-container {
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        .social-media-container h4 {
+            color: #ffd700;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .social-icon.whatsapp {
+            background: linear-gradient(45deg, #25D366, #128C7E);
+        }
+        
+        .social-icon.instagram {
+            background: linear-gradient(45deg, #E4405F, #C13584, #833AB4);
+        }
+        
+        .social-icon.email {
+            background: linear-gradient(45deg, #EA4335, #FBBC05);
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .social-text-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .social-text-links a {
+            color: #ff6b9d;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .social-text-links a:hover {
+            color: #ffd700;
+        }
+        
+        /* Floating WhatsApp Button */
+        .floating-wp {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #25D366, #128C7E);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+        
+        .floating-wp:hover {
+            transform: scale(1.1);
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        
+        /* Instagram Feed Section */
+        .instagram-feed {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 800px;
+            text-align: center;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+        }
+        
+        .instagram-feed h3 {
+            color: #ffd700;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+        
+        .instagram-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .instagram-item {
+            aspect-ratio: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(135deg, #1a0033, #4d0080);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .instagram-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+        }
+        
+        .instagram-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .instagram-item .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .instagram-item:hover .overlay {
+            opacity: 1;
+        }
+        
+        /* WhatsApp Chat Section */
+        .whatsapp-section {
+            background: rgba(37, 211, 102, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 800px;
+            text-align: center;
+            border: 2px solid rgba(37, 211, 102, 0.3);
+        }
+        
+        .whatsapp-section h3 {
+            color: #25D366;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+        
+        .whatsapp-benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .benefit-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .benefit-item i {
+            font-size: 2rem;
+            color: #25D366;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Cosmic Background -->
+    <div class="cosmic-bg" id="cosmicBg"></div>
+    
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/919409628107?text=Hello%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services." target="_blank" class="floating-wp" title="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">🔮 Monark Astrology</a>
+            <ul class="nav-links">
+                <li><a href="#home" data-key="nav_home">Home</a></li>
+                <li><a href="#panchang" data-key="nav_panchang">Panchang</a></li>
+                <li><a href="#horoscope" data-key="nav_horoscope">Horoscope</a></li>
+                <li><a href="#numerology" data-key="nav_numerology">Numerology</a></li>
+                <li><a href="#vastu" data-key="nav_vastu">Vastu</a></li>
+                <li><a href="#contact" data-key="nav_contact">Contact</a></li>
+                <li class="language-selector">
+                    <select id="languageSelect" onchange="changeLanguage(this.value)" style="background: rgba(255, 215, 0, 0.2); color: #fff; border: 1px solid #ffd700; border-radius: 5px; padding: 0.5rem;">
+                        <option value="en">English</option>
+                        <option value="hi">हिंदी</option>
+                        <option value="gu">ગુજરાતી</option>
+                    </select>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 data-key="hero_title">Unlock Your Cosmic Destiny</h1>
+            <p data-key="hero_subtitle">Discover the mysteries of the stars and unveil your true path through ancient wisdom and celestial guidance</p>
+            <a href="#horoscope" class="cta-button" data-key="hero_cta">Begin Your Journey</a>
+        </div>
+        
+        <!-- Zodiac Wheel -->
+        <div class="zodiac-wheel" id="zodiacWheel">
+            <div class="zodiac-sign" style="top: 10%; left: 45%;" data-sign="aries" title="Aries">♈</div>
+            <div class="zodiac-sign" style="top: 20%; right: 20%;" data-sign="taurus" title="Taurus">♉</div>
+            <div class="zodiac-sign" style="top: 45%; right: 10%;" data-sign="gemini" title="Gemini">♊</div>
+            <div class="zodiac-sign" style="bottom: 20%; right: 20%;" data-sign="cancer" title="Cancer">♋</div>
+            <div class="zodiac-sign" style="bottom: 10%; left: 45%;" data-sign="leo" title="Leo">♌</div>
+            <div class="zodiac-sign" style="bottom: 20%; left: 20%;" data-sign="virgo" title="Virgo">♍</div>
+            <div class="zodiac-sign" style="top: 45%; left: 10%;" data-sign="libra" title="Libra">♎</div>
+            <div class="zodiac-sign" style="top: 20%; left: 20%;" data-sign="scorpio" title="Scorpio">♏</div>
+            <div class="zodiac-sign" style="top: 35%; right: 15%;" data-sign="sagittarius" title="Sagittarius">♐</div>
+            <div class="zodiac-sign" style="bottom: 35%; right: 15%;" data-sign="capricorn" title="Capricorn">♑</div>
+            <div class="zodiac-sign" style="bottom: 35%; left: 15%;" data-sign="aquarius" title="Aquarius">♒</div>
+            <div class="zodiac-sign" style="top: 35%; left: 15%;" data-sign="pisces" title="Pisces">♓</div>
+        </div>
+    </section>
+    
+    <!-- Instagram Feed Section -->
+    <section class="section">
+        <div class="instagram-feed">
+            <h3><i class="fab fa-instagram"></i> Follow Us on Instagram</h3>
+            <p>Get daily astrological insights, remedies, and spiritual guidance</p>
+            <a href="https://www.instagram.com/monark_astrology/" target="_blank" class="cta-button" style="margin-top: 1rem; background: linear-gradient(45deg, #E4405F, #C13584, #833AB4);">
+                <i class="fab fa-instagram"></i> Follow @monark_astrology
+            </a>
+            
+            <div class="instagram-grid">
+                <div class="instagram-item">
+                    <img src="https://picsum.photos/seed/astro1/300/300.jpg" alt="Astrology Post">
+                    <div class="overlay">
+                        <i class="fab fa-instagram" style="font-size: 2rem;"></i>
+                    </div>
+                </div>
+                <div class="instagram-item">
+                    <img src="https://picsum.photos/seed/astro2/300/300.jpg" alt="Astrology Post">
+                    <div class="overlay">
+                        <i class="fab fa-instagram" style="font-size: 2rem;"></i>
+                    </div>
+                </div>
+                <div class="instagram-item">
+                    <img src="https://picsum.photos/seed/astro3/300/300.jpg" alt="Astrology Post">
+                    <div class="overlay">
+                        <i class="fab fa-instagram" style="font-size: 2rem;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- WhatsApp Chat Section -->
+    <section class="section">
+        <div class="whatsapp-section">
+            <h3><i class="fab fa-whatsapp"></i> Connect on WhatsApp</h3>
+            <p>Get instant astrological consultations and remedies directly on WhatsApp</p>
+            <a href="https://wa.me/919409628107?text=Hello%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services." target="_blank" class="cta-button" style="margin-top: 1rem; background: linear-gradient(45deg, #25D366, #128C7E);">
+                <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+            </a>
+            
+            <div class="whatsapp-benefits">
+                <div class="benefit-item">
+                    <i class="fas fa-clock"></i>
+                    <h4>24/7 Availability</h4>
+                    <p>Reach out anytime for guidance</p>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-comments"></i>
+                    <h4>Instant Response</h4>
+                    <p>Quick replies to your queries</p>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-file-alt"></i>
+                    <h4>Detailed Reports</h4>
+                    <p>Get personalized horoscope reports</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Daily Panchang Section -->
+    <section id="panchang" class="section">
+        <h2 data-key="panchang_title">Daily Panchang</h2>
+        <p style="text-align: center; font-size: 1.2rem; margin-bottom: 2rem; color: #ff6b9d;" data-key="panchang_subtitle">
+            Today's auspicious timings and celestial influences according to Vedic calendar
+        </p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
+            <div class="horoscope-card">
+                <h3 style="color: #ffd700; margin-bottom: 1rem;">📅 <span data-key="today_date">Today's Date</span></h3>
+                <div id="todayDate" style="font-size: 1.2rem; margin-bottom: 1rem; color: #ff6b9d;"></div>
+                <div style="background: rgba(255, 215, 0, 0.1); padding: 1rem; border-radius: 10px;">
+                    <p><strong data-key="tithi_label">Tithi:</strong> <span id="currentTithi">Shukla Paksha Saptami</span></p>
+                    <p><strong data-key="nakshatra_label">Nakshatra:</strong> <span id="currentNakshatra">Pushya</span></p>
+                    <p><strong data-key="yoga_label">Yoga:</strong> <span id="currentYoga">Siddha</span></p>
+                    <p><strong data-key="karana_label">Karana:</strong> <span id="currentKarana">Bava</span></p>
+                </div>
+            </div>
+            
+            <div class="horoscope-card">
+                <h3 style="color: #ffd700; margin-bottom: 1rem;">🌅 <span data-key="sunrise_sunset">Sunrise & Sunset</span></h3>
+                <div style="background: rgba(255, 107, 157, 0.1); padding: 1rem; border-radius: 10px;">
+                    <p><strong data-key="sunrise_label">Sunrise:</strong> <span id="sunriseTime">06:45 AM</span></p>
+                    <p><strong data-key="sunset_label">Sunset:</strong> <span id="sunsetTime">06:30 PM</span></p>
+                    <p><strong data-key="day_duration">Day Duration:</strong> <span id="dayDuration">11h 45m</span></p>
+                </div>
+                <div style="margin-top: 1rem; padding: 1rem; background: rgba(255, 215, 0, 0.1); border-radius: 10px;">
+                    <p><strong data-key="moonrise_label">Moonrise:</strong> <span id="moonriseTime">10:15 PM</span></p>
+                    <p><strong data-key="moonset_label">Moonset:</strong> <span id="moonsetTime">09:30 AM</span></p>
+                </div>
+            </div>
+            
+            <div class="horoscope-card">
+                <h3 style="color: #ffd700; margin-bottom: 1rem;">⏰ <span data-key="auspicious_times">Auspicious Times</span></h3>
+                <div style="background: rgba(128, 0, 204, 0.1); padding: 1rem; border-radius: 10px;">
+                    <p><strong data-key="abhijit_muhurat">Abhijit Muhurat:</strong><br><span id="abhijitTime">12:15 PM - 01:00 PM</span></p>
+                    <p><strong data-key="brahma_muhurat">Brahma Muhurat:</strong><br><span id="brahmaTime">05:00 AM - 05:45 AM</span></p>
+                    <p><strong data-key="godhuli_muhurat">Godhuli Muhurat:</strong><br><span id="godhuliTime">06:15 PM - 06:45 PM</span></p>
+                </div>
+            </div>
+            
+            <div class="horoscope-card">
+                <h3 style="color: #ffd700; margin-bottom: 1rem;">⚠️ <span data-key="inauspicious_times">Inauspicious Times</span></h3>
+                <div style="background: rgba(255, 107, 157, 0.1); padding: 1rem; border-radius: 10px;">
+                    <p><strong data-key="rahu_kaal">Rahu Kaal:</strong><br><span id="rahuKaal">02:30 PM - 04:00 PM</span></p>
+                    <p><strong data-key="yamaganda">Yamaganda:</strong><br><span id="yamaganda">09:00 AM - 10:30 AM</span></p>
+                    <p><strong data-key="gulika_kaal">Gulika Kaal:</strong><br><span id="gulikaKaal">12:00 PM - 01:30 PM</span></p>
+                </div>
+            </div>
+            
+            <div class="horoscope-card">
+                <h3 style="color: #ffd700; margin-bottom: 1rem;">🎯 <span data-key="daily_guidance">Daily Guidance</span></h3>
+                <div id="dailyGuidance" style="line-height: 1.8;">
+                    <p data-key="guidance_text">Today is favorable for spiritual practices, meditation, and seeking divine blessings. Avoid starting new ventures during Rahu Kaal. Wear white or light colors for positive energy.</p>
+                </div>
+                <div style="margin-top: 1rem; padding: 1rem; background: rgba(255, 215, 0, 0.1); border-radius: 10px;">
+                    <p><strong data-key="lucky_direction">Lucky Direction:</strong> <span id="luckyDirection">East</span></p>
+                    <p><strong data-key="lucky_color_today">Lucky Color:</strong> <span id="luckyColorToday">White</span></p>
+                    <p><strong data-key="avoid_direction">Avoid Direction:</strong> <span id="avoidDirection">South-West</span></p>
+                </div>
+            </div>
+            
+            <div class="horoscope-card">
+                <h3 style="color: #ffd700; margin-bottom: 1rem;">🌙 <span data-key="moon_phase">Moon Phase</span></h3>
+                <div style="text-align: center; margin: 1rem 0;">
+                    <div id="moonPhaseIcon" style="font-size: 4rem; margin-bottom: 1rem;">🌗</div>
+                    <p id="moonPhaseName" style="font-size: 1.2rem; color: #ff6b9d;">Waxing Crescent</p>
+                </div>
+                <div style="background: rgba(255, 215, 0, 0.1); padding: 1rem; border-radius: 10px;">
+                    <p><strong data-key="moon_sign">Moon in Sign:</strong> <span id="moonSign">Cancer ♋</span></p>
+                    <p><strong data-key="moon_influence">Influence:</strong> <span id="moonInfluence" data-key="moon_influence_text">Emotional sensitivity and intuition heightened</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Daily Horoscope Section -->
+    <section id="horoscope" class="section">
+        <h2 data-key="horoscope_title">Daily Horoscope</h2>
+        <p style="text-align: center; font-size: 1.2rem; margin-bottom: 2rem; color: #ff6b9d;" data-key="horoscope_subtitle">
+            The stars have aligned to bring you cosmic wisdom for today
+        </p>
+        
+        <div class="horoscope-grid" id="horoscopeGrid">
+            <!-- Horoscope cards will be generated by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Planetary Positions -->
+    <section class="section">
+        <h2 data-key="planetary_title">Current Planetary Positions</h2>
+        <p style="text-align: center; font-size: 1.2rem; margin-bottom: 2rem; color: #ff6b9d;" data-key="planetary_subtitle">
+            See how the celestial bodies influence your energy today
+        </p>
+        
+        <div class="planetary-system">
+            <div class="orbit orbit-1"></div>
+            <div class="orbit orbit-2"></div>
+            <div class="orbit orbit-3"></div>
+            <div class="orbit orbit-4"></div>
+            <div class="orbit orbit-5"></div>
+            <div class="orbit orbit-6"></div>
+            
+            <div class="planet sun" title="Sun - Your core essence"></div>
+            <div class="planet mercury" title="Mercury - Communication" style="top: 30%; left: 60%;"></div>
+            <div class="planet venus" title="Venus - Love and beauty" style="top: 40%; left: 70%;"></div>
+            <div class="planet earth" title="Earth - Your grounding" style="top: 50%; left: 80%;"></div>
+            <div class="planet mars" title="Mars - Your drive and passion" style="top: 60%; left: 75%;"></div>
+            <div class="planet jupiter" title="Jupiter - Expansion and luck" style="top: 70%; left: 30%;"></div>
+            <div class="planet saturn" title="Saturn - Discipline and lessons" style="top: 20%; left: 20%;"></div>
+        </div>
+    </section>
+    
+    <!-- Vastu Consultancy -->
+    <section id="vastu" class="section">
+        <h2 data-key="vastu_title">Vastu Shastra Consultancy</h2>
+        <p style="text-align: center; font-size: 1.2rem; margin-bottom: 2rem; color: #ff6b9d;" data-key="vastu_subtitle">
+            Harmonize your living space with ancient Vedic architecture principles
+        </p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
+            <div class="horoscope-card">
+                <h3 style="color: #ffd700; margin-bottom: 1rem;">🏠 Home Vastu Analysis</h3>
+                <p>Complete analysis of your home's energy flow, room placement, and directional alignment according to Vastu principles.</p>
+                <ul style="margin: 1rem 0; padding-left: 1.5rem;">
+                    <li>Main entrance direction analysis</li>
+                    <li>Kitchen and bedroom positioning</li>
+                    <li>Bathroom and staircase placement</li>
+                    <li>Color recommendations for each room</li>
+                </ul>
+                <div style="text-align: center; margin-top: 1.5rem;">
+                    <button class="mystical-button" onclick="openVastuConsultation('home')" data-key="book_consultation_btn">Book Consultation</button>
+                </div>
+            </div>
+            
+            <div class="horoscope-card">
+                <h3 style="color: #ffd700; margin-bottom: 1rem;">🏢 Office Vastu Consultation</h3>
+                <p>Optimize your workplace for success, prosperity, and positive energy flow to enhance productivity and business growth.</p>
+                <ul style="margin: 1rem 0; padding-left: 1.5rem;">
+                    <li>Desk and seating arrangement</li>
+                    <li>Cash counter positioning</li>
+                    <li>Meeting room optimization</li>
+                    <li>Entrance and reception area</li>
+                </ul>
+                <div style="text-align: center; margin-top: 1.5rem;">
+                    <button class="mystical-button" onclick="openVastuConsultation('office')" data-key="book_consultation_btn">Book Consultation</button>
+                </div>
+            </div>
+            
+            <div class="horoscope-card">
+                <h3 style="color: #ffd700; margin-bottom: 1rem;">🏗️ Construction Vastu</h3>
+                <p>Plan your new construction project with Vastu compliance from the foundation to ensure lifelong prosperity and harmony.</p>
+                <ul style="margin: 1rem 0; padding-left: 1.5rem;">
+                    <li>Plot selection and analysis</li>
+                    <li>Foundation laying guidance</li>
+                    <li>Room layout planning</li>
+                    <li>Auspicious timing for construction</li>
+                </ul>
+                <div style="text-align: center; margin-top: 1.5rem;">
+                    <button class="mystical-button" onclick="openVastuConsultation('construction')" data-key="book_consultation_btn">Book Consultation</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Vastu Compass -->
+        <div style="text-align: center; margin: 3rem 0;">
+            <h3 data-key="vastu_compass_title">Vastu Direction Compass</h3>
+            <div class="vastu-compass" style="width: 300px; height: 300px; margin: 2rem auto; position: relative; border: 3px solid #ffd700; border-radius: 50%; background: radial-gradient(circle, rgba(255, 215, 0, 0.1), transparent);">
+                <div style="position: absolute; top: 10px; left: 50%; transform: translateX(-50%); color: #ff6b9d; font-weight: bold;">N</div>
+                <div style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); color: #ff6b9d; font-weight: bold;">E</div>
+                <div style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); color: #ff6b9d; font-weight: bold;">S</div>
+                <div style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: #ff6b9d; font-weight: bold;">W</div>
+                
+                <!-- Vastu zones -->
+                <div style="position: absolute; top: 20%; left: 20%; width: 25%; height: 25%; background: rgba(255, 215, 0, 0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; text-align: center;">NW<br>Air</div>
+                <div style="position: absolute; top: 20%; left: 50%; transform: translateX(-50%); width: 25%; height: 25%; background: rgba(255, 107, 157, 0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; text-align: center;">N<br>Water</div>
+                <div style="position: absolute; top: 20%; right: 20%; width: 25%; height: 25%; background: rgba(128, 0, 204, 0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; text-align: center;">NE<br>Water</div>
+                
+                <div style="position: absolute; top: 50%; transform: translateY(-50%); left: 20%; width: 25%; height: 25%; background: rgba(255, 215, 0, 0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; text-align: center;">W<br>Earth</div>
+                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 25%; height: 25%; background: rgba(255, 255, 255, 0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; text-align: center;">Center<br>Space</div>
+                <div style="position: absolute; top: 50%; transform: translateY(-50%); right: 20%; width: 25%; height: 25%; background: rgba(255, 107, 157, 0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; text-align: center;">E<br>Fire</div>
+                
+                <div style="position: absolute; bottom: 20%; left: 20%; width: 25%; height: 25%; background: rgba(128, 0, 204, 0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; text-align: center;">SW<br>Earth</div>
+                <div style="position: absolute; bottom: 20%; left: 50%; transform: translateX(-50%); width: 25%; height: 25%; background: rgba(255, 215, 0, 0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; text-align: center;">S<br>Fire</div>
+                <div style="position: absolute; bottom: 20%; right: 20%; width: 25%; height: 25%; background: rgba(255, 107, 157, 0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; text-align: center;">SE<br>Fire</div>
+            </div>
+        </div>
+        
+        <!-- Contact Information -->
+        <div style="background: rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 3rem; backdrop-filter: blur(15px); border: 2px solid rgba(255, 215, 0, 0.3); text-align: center; margin-top: 3rem;">
+            <h3 class="mystical-text" data-key="contact_expert_title">Contact Our Vastu Expert</h3>
+            <p style="margin: 1rem 0; font-size: 1.1rem;" data-key="expert_description">Certified Vastu consultant with 17+ years of experience in harmonizing spaces for prosperity and well-being</p>
+            
+            <div style="display: flex; justify-content: center; gap: 1.5rem; margin: 2rem 0; flex-wrap: wrap;">
+                <a href="https://wa.me/919409628107?text=Hello%2C%20I%20would%20like%20to%20book%20a%20Vastu%20consultation.%20Please%20provide%20more%20details." target="_blank" style="display: flex; align-items: center; gap: 0.5rem; background: linear-gradient(45deg, #25D366, #128C7E); color: white; padding: 1rem 1.5rem; border-radius: 50px; text-decoration: none; transition: all 0.3s ease; font-weight: bold;">
+                    <span style="font-size: 1.5rem;">📱</span>
+                    <span data-key="whatsapp_btn">WhatsApp: +91 94096 28107</span>
+                </a>
+                
+                <a href="mailto:monarkastrology@gmail.com?subject=Vastu%20Consultation%20Inquiry&body=Hello%2C%0A%0AI%20would%20like%20to%20book%20a%20Vastu%20consultation.%20Please%20provide%20more%20details%20about%20the%20process%20and%20schedule.%0A%0AThank%20you." style="display: flex; align-items: center; gap: 0.5rem; background: linear-gradient(45deg, #EA4335, #FBBC05); color: white; padding: 1rem 1.5rem; border-radius: 50px; text-decoration: none; transition: all 0.3s ease; font-weight: bold;">
+                    <span style="font-size: 1.5rem;">📧</span>
+                    <span data-key="email_btn">Email: monarkastrology@gmail.com</span>
+                </a>
+                
+                <a href="https://www.instagram.com/monark_astrology/" target="_blank" style="display: flex; align-items: center; gap: 0.5rem; background: linear-gradient(45deg, #E4405F, #C13584, #833AB4); color: white; padding: 1rem 1.5rem; border-radius: 50px; text-decoration: none; transition: all 0.3s ease; font-weight: bold;">
+                    <span style="font-size: 1.5rem;">📷</span>
+                    <span data-key="instagram_btn">Instagram: @monark_astrology</span>
+                </a>
+            </div>
+            
+            <div style="background: rgba(255, 215, 0, 0.1); padding: 1.5rem; border-radius: 15px; margin-top: 2rem;">
+                <h4 style="color: #ffd700; margin-bottom: 1rem;" data-key="consultation_rates_title">Consultation Rates</h4>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                    <div>
+                        <strong data-key="online_consultation">Online Consultation:</strong><br>
+                        <span style="color: #ff6b9d;">₹1,500 per session</span>
+                    </div>
+                    <div>
+                        <strong data-key="site_visit">Site Visit:</strong><br>
+                        <span style="color: #ff6b9d;">₹3,000 + travel</span>
+                    </div>
+                    <div>
+                        <strong data-key="construction_planning">Construction Planning:</strong><br>
+                        <span style="color: #ff6b9d;">₹6,000 onwards</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Numerology Calculator -->
+    <section id="numerology" class="section">
+        <h2 data-key="numerology_title">Numerology Calculator</h2>
+        <p style="text-align: center; font-size: 1.2rem; margin-bottom: 2rem; color: #ff6b9d;" data-key="numerology_subtitle">
+            Discover the mystical power of numbers in your life
+        </p>
+        
+        <div class="numerology-container">
+            <div class="form-group">
+                <label for="fullName" data-key="full_name_label">Full Name (as on birth certificate):</label>
+                <input type="text" id="fullName" placeholder="Enter your full name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="numerologyDate" data-key="birth_date_label">Date of Birth:</label>
+                <input type="date" id="numerologyDate" required>
+            </div>
+            
+            <button class="mystical-button" onclick="calculateNumerology()" data-key="reveal_numbers_btn">
+                Reveal My Numbers
+            </button>
+            
+            <div class="numerology-result" id="numerologyResult">
+                <!-- Numerology results will appear here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <h2 data-key="contact_title">संपर्क करें / Contact Us</h2>
+        <p style="text-align: center; font-size: 1.2rem; margin-bottom: 2rem; color: #ff6b9d;">
+            आपकी ज्योतिषीय समस्याओं का समाधान सिर्फ एक कॉल की दूरी पर / Your astrological solutions are just a call away
+        </p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem;">
+            <div class="horoscope-card">
+                <h3 style="color: #ffd700; margin-bottom: 1rem;">📱 व्हाट्सऐप / WhatsApp</h3>
+                <p style="margin-bottom: 1rem;">तुरंत जवाब के लिए व्हाट्सऐप करें<br>For instant response, WhatsApp us</p>
+                <a href="https://wa.me/919409628107?text=नमस्ते%2C%20मुझे%20ज्योतिष%20सलाह%20चाहिए।%20कृपया%20अधिक%20जानकारी%20दें।" target="_blank" style="display: inline-block; background: linear-gradient(45deg, #25D366, #128C7E); color: white; padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: bold; transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);">
+                    📱 +91 94096 28107
+                </a>
+                <p style="font-size: 0.9rem; margin-top: 1rem; color: #ccc;">Available 24/7 for consultations</p>
+            </div>
+            
+            <div class="horoscope-card">
+                <h3 style="color: #ffd700; margin-bottom: 1rem;">📧 ईमेल / Email</h3>
+                <p style="margin-bottom: 1rem;">विस्तृत जानकारी के लिए ईमेल करें<br>Email for detailed information</p>
+                <a href="mailto:monarkastrology@gmail.com?subject=ज्योतिष%20परामर्श%20के%20लिए%20संपर्क&body=नमस्ते%2C%0A%0Aमुझे%20ज्योतिष%20परामर्श%20की%20आवश्यकता%20है।%20कृपया%20अधिक%20जानकारी%20प्रदान%20करें।%0A%0Aधन्यवाद" style="display: inline-block; background: linear-gradient(45deg, #EA4335, #FBBC05); color: white; padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: bold; transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(234, 67, 53, 0.3);">
+                    📧 monarkastrology@gmail.com
+                </a>
+                <p style="font-size: 0.9rem; margin-top: 1rem; color: #ccc;">Response within 24 hours</p>
+            </div>
+            
+            <div class="horoscope-card">
+                <h3 style="color: #ffd700; margin-bottom: 1rem;">📍 पता / Address</h3>
+                <p style="margin-bottom: 1rem;">व्यक्तिगत मुलाकात के लिए<br>For personal consultation</p>
+                <div style="background: rgba(255, 215, 0, 0.1); padding: 1rem; border-radius: 10px;">
+                    <p><strong>🏛️ Monark Astrology Center</strong></p>
+                    <p>📍 Gujarat, India</p>
+                    <p>🕐 Mon-Sun: 9:00 AM - 9:00 PM</p>
+                    <p style="font-size: 0.9rem; color: #ff6b9d; margin-top: 0.5rem;">*Appointment required for personal visit</p>
+                </div>
+            </div>
+            
+            <div class="horoscope-card">
+                <h3 style="color: #ffd700; margin-bottom: 1rem;">📱 सोशल मीडिया / Social Media</h3>
+                <p style="margin-bottom: 1rem;">हमारे साथ जुड़ें / Connect with us</p>
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <a href="https://www.instagram.com/monark_astrology/" target="_blank" style="display: flex; align-items: center; gap: 0.5rem; background: linear-gradient(45deg, #E4405F, #C13584, #833AB4); color: white; padding: 0.8rem 1.5rem; border-radius: 25px; text-decoration: none; font-weight: bold; transition: all 0.3s ease;">
+                        📷 Instagram: @monark_astrology
+                    </a>
+                    <a href="https://www.facebook.com/monarkastrology" target="_blank" style="display: flex; align-items: center; gap: 0.5rem; background: linear-gradient(45deg, #1877F2, #42A5F5); color: white; padding: 0.8rem 1.5rem; border-radius: 25px; text-decoration: none; font-weight: bold; transition: all 0.3s ease;">
+                        📘 Facebook: Monark Astrology
+                    </a>
+                    <a href="https://www.youtube.com/@monarkastrology" target="_blank" style="display: flex; align-items: center; gap: 0.5rem; background: linear-gradient(45deg, #FF0000, #FF4444); color: white; padding: 0.8rem 1.5rem; border-radius: 25px; text-decoration: none; font-weight: bold; transition: all 0.3s ease;">
+                        📺 YouTube: Monark Astrology
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Services & Rates -->
+        <div style="margin-top: 3rem; background: rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 3rem; backdrop-filter: blur(15px); border: 2px solid rgba(255, 215, 0, 0.3);">
+            <h3 class="mystical-text" style="text-align: center; margin-bottom: 2rem; font-size: 2rem;">🌟 सेवाएं और दरें / Services & Rates 🌟</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+                <div style="background: rgba(255, 215, 0, 0.1); padding: 2rem; border-radius: 15px; text-align: center; border: 2px solid rgba(255, 215, 0, 0.3); transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(255, 215, 0, 0.3)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                    <h4 style="color: #ffd700; margin-bottom: 1rem; font-size: 1.3rem;">🔮 ज्योतिष परामर्श</h4>
+                    <p style="margin-bottom: 1rem;">Astrology Consultation</p>
+                    <div style="font-size: 1.8rem; color: #ff6b9d; font-weight: bold; margin: 1rem 0;">₹500 - ₹2000</div>
+                    <ul style="text-align: left; padding-left: 1rem; font-size: 0.9rem;">
+                        <li>व्यक्तिगत राशिफल / Personal Horoscope</li>
+                        <li>करियर गाइडेंस / Career Guidance</li>
+                        <li>विवाह संबंधी सलाह / Marriage Advice</li>
+                        <li>स्वास्थ्य परामर्श / Health Consultation</li>
+                    </ul>
+                </div>
+                
+                <div style="background: rgba(255, 107, 157, 0.1); padding: 2rem; border-radius: 15px; text-align: center; border: 2px solid rgba(255, 107, 157, 0.3); transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(255, 107, 157, 0.3)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                    <h4 style="color: #ffd700; margin-bottom: 1rem; font-size: 1.3rem;">🏠 वास्तु सलाह</h4>
+                    <p style="margin-bottom: 1rem;">Vastu Consultation</p>
+                    <div style="font-size: 1.8rem; color: #ff6b9d; font-weight: bold; margin: 1rem 0;">₹1500 - ₹5000</div>
+                    <ul style="text-align: left; padding-left: 1rem; font-size: 0.9rem;">
+                        <li>घर की वास्तु / Home Vastu</li>
+                        <li>ऑफिस वास्तु / Office Vastu</li>
+                        <li>फैक्ट्री वास्तु / Factory Vastu</li>
+                        <li>भूमि चयन / Plot Selection</li>
+                    </ul>
+                </div>
+                
+                <div style="background: rgba(128, 0, 204, 0.1); padding: 2rem; border-radius: 15px; text-align: center; border: 2px solid rgba(128, 0, 204, 0.3); transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(128, 0, 204, 0.3)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                    <h4 style="color: #ffd700; margin-bottom: 1rem; font-size: 1.3rem;">💍 विवाह मिलान</h4>
+                    <p style="margin-bottom: 1rem;">Marriage Matching</p>
+                    <div style="font-size: 1.8rem; color: #ff6b9d; font-weight: bold; margin: 1rem 0;">₹1000 - ₹3000</div>
+                    <ul style="text-align: left; padding-left: 1rem; font-size: 0.9rem;">
+                        <li>कुंडली मिलान / Kundli Matching</li>
+                        <li>गुण मिलान / Guna Milan</li>
+                        <li>मंगल दोष जांच / Mangal Dosha Check</li>
+                        <li>विवाह मुहूर्त / Marriage Muhurat</li>
+                    </ul>
+                </div>
+                
+                <div style="background: rgba(255, 215, 0, 0.1); padding: 2rem; border-radius: 15px; text-align: center; border: 2px solid rgba(255, 215, 0, 0.3); transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(255, 215, 0, 0.3)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                    <h4 style="color: #ffd700; margin-bottom: 1rem; font-size: 1.3rem;">📿 पूजा विधान</h4>
+                    <p style="margin-bottom: 1rem;">Puja & Remedies</p>
+                    <div style="font-size: 1.8rem; color: #ff6b9d; font-weight: bold; margin: 1rem 0;">₹500 - ₹10000</div>
+                    <ul style="text-align: left; padding-left: 1rem; font-size: 0.9rem;">
+                        <li>ग्रह शांति पूजा / Graha Shanti Puja</li>
+                        <li>रुद्राभिषेक / Rudrabhishek</li>
+                        <li>नवग्रह पूजा / Navgraha Puja</li>
+                        <li>यंत्र प्राण प्रतिष्ठा / Yantra Consecration</li>
+                    </ul>
+                </div>
+                
+                <div style="background: rgba(255, 107, 157, 0.1); padding: 2rem; border-radius: 15px; text-align: center; border: 2px solid rgba(255, 107, 157, 0.3); transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(255, 107, 157, 0.3)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                    <h4 style="color: #ffd700; margin-bottom: 1rem; font-size: 1.3rem;">💎 रत्न सलाह</h4>
+                    <p style="margin-bottom: 1rem;">Gemstone Consultation</p>
+                    <div style="font-size: 1.8rem; color: #ff6b9d; font-weight: bold; margin: 1rem 0;">₹800 - ₹2500</div>
+                    <ul style="text-align: left; padding-left: 1rem; font-size: 0.9rem;">
+                        <li>रत्न चयन / Gemstone Selection</li>
+                        <li>धारण विधि / Wearing Method</li>
+                        <li>रत्न प्रमाणीकरण / Gem Authentication</li>
+                        <li>यंत्र सलाह / Yantra Advice</li>
+                    </ul>
+                </div>
+                
+                <div style="background: rgba(128, 0, 204, 0.1); padding: 2rem; border-radius: 15px; text-align: center; border: 2px solid rgba(128, 0, 204, 0.3); transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(128, 0, 204, 0.3)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                    <h4 style="color: #ffd700; margin-bottom: 1rem; font-size: 1.3rem;">🌟 विशेष सेवाएं</h4>
+                    <p style="margin-bottom: 1rem;">Special Services</p>
+                    <div style="font-size: 1.8rem; color: #ff6b9d; font-weight: bold; margin: 1rem 0;">₹1500 - ₹8000</div>
+                    <ul style="text-align: left; padding-left: 1rem; font-size: 0.9rem;">
+                        <li>प्रश्न कुंडली / Prashna Kundli</li>
+                        <li>मुहूर्त निकालना / Muhurat Selection</li>
+                        <li>नामकरण / Name Suggestion</li>
+                        <li>व्यापार सलाह / Business Consultation</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: rgba(255, 215, 0, 0.1); border-radius: 15px; border: 2px solid rgba(255, 215, 0, 0.3);">
+                <h4 style="color: #ffd700; margin-bottom: 1.5rem; font-size: 1.5rem;">🎯 विशेष सुविधाएं / Special Features</h4>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+                    <div style="background: rgba(37, 211, 102, 0.1); padding: 1rem; border-radius: 10px;">
+                        <span style="font-size: 1.2rem;">✅ ऑनलाइन परामर्श</span><br>
+                        <small>Online Consultation Available</small>
+                    </div>
+                    <div style="background: rgba(255, 107, 157, 0.1); padding: 1rem; border-radius: 10px;">
+                        <span style="font-size: 1.2rem;">✅ त्रिभाषी सेवा</span><br>
+                        <small>Hindi/Gujarati/English</small>
+                    </div>
+                    <div style="background: rgba(128, 0, 204, 0.1); padding: 1rem; border-radius: 10px;">
+                        <span style="font-size: 1.2rem;">✅ 24/7 सपोर्ट</span><br>
+                        <small>WhatsApp Support Available</small>
+                    </div>
+                    <div style="background: rgba(255, 215, 0, 0.1); padding: 1rem; border-radius: 10px;">
+                        <span style="font-size: 1.2rem;">✅ फ्री फॉलो-अप</span><br>
+                        <small>Free Follow-up Session</small>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        <!-- Quick Contact Form -->
+        <div style="margin-top: 3rem; background: rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 3rem; backdrop-filter: blur(15px); border: 2px solid rgba(255, 215, 0, 0.3);">
+            <h3 class="mystical-text" style="text-align: center; margin-bottom: 2rem;">📞 त्वरित संपर्क / Quick Contact</h3>
+            <div style="max-width: 600px; margin: 0 auto;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+                    <input type="text" placeholder="आपका नाम / Your Name" style="padding: 1rem; border: 2px solid rgba(255, 215, 0, 0.3); border-radius: 10px; background: rgba(255, 255, 255, 0.1); color: #fff; font-size: 1rem;">
+                    <input type="tel" placeholder="मोबाइल नंबर / Mobile Number" style="padding: 1rem; border: 2px solid rgba(255, 215, 0, 0.3); border-radius: 10px; background: rgba(255, 255, 255, 0.1); color: #fff; font-size: 1rem;">
+                </div>
+                <select style="width: 100%; padding: 1rem; border: 2px solid rgba(255, 215, 0, 0.3); border-radius: 10px; background: rgba(255, 255, 255, 0.1); color: #fff; font-size: 1rem; margin-bottom: 1rem;">
+                    <option value="">सेवा चुनें / Select Service</option>
+                    <option value="astrology">ज्योतिष परामर्श / Astrology Consultation</option>
+                    <option value="vastu">वास्तु सलाह / Vastu Consultation</option>
+                    <option value="marriage">विवाह मिलान / Marriage Matching</option>
+                    <option value="puja">पूजा विधान / Puja & Remedies</option>
+                    <option value="gemstone">रत्न सलाह / Gemstone Consultation</option>
+                </select>
+                <textarea placeholder="अपनी समस्या बताएं / Describe your problem" rows="4" style="width: 100%; padding: 1rem; border: 2px solid rgba(255, 215, 0, 0.3); border-radius: 10px; background: rgba(255, 255, 255, 0.1); color: #fff; font-size: 1rem; margin-bottom: 1rem; resize: vertical;"></textarea>
+                <button onclick="sendQuickMessage()" style="width: 100%; padding: 1.2rem; background: linear-gradient(45deg, #25D366, #128C7E); color: white; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; transition: all 0.3s ease; font-size: 1.1rem;">
+                    📱 व्हाट्सऐप पर भेजें / Send via WhatsApp
+                </button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#panchang">Panchang</a>
+                <a href="#horoscope">Horoscope</a>
+                <a href="#numerology">Numerology</a>
+                <a href="#vastu">Vastu</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <p>&copy; 2024 Monark Astrology. May the stars guide your journey. ✨</p>
+            
+            <!-- Enhanced Social Media Section -->
+            <div class="social-media-container">
+                <h4>Connect With Us</h4>
+                <div class="social-icons">
+                    <a href="https://wa.me/919409628107?text=Hello%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services." target="_blank" class="social-icon whatsapp" title="WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="https://www.instagram.com/monark_astrology/" target="_blank" class="social-icon instagram" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="mailto:monarkastrology@gmail.com" class="social-icon email" title="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+                <div class="social-text-links">
+                    <a href="https://wa.me/919409628107?text=Hello%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services." target="_blank">WhatsApp: +91 94096 28107</a>
+                    <a href="https://www.instagram.com/monark_astrology/" target="_blank">Instagram: @monark_astrology</a>
+                    <a href="mailto:monarkastrology@gmail.com">Email: monarkastrology@gmail.com</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Language translations
+        const translations = {
+            en: {
+                nav_home: "Home",
+                nav_panchang: "Panchang",
+                nav_horoscope: "Horoscope", 
+                nav_numerology: "Numerology",
+                nav_vastu: "Vastu",
+                nav_contact: "Contact",
+                hero_title: "Unlock Your Cosmic Destiny",
+                hero_subtitle: "Discover the mysteries of the stars and unveil your true path through ancient wisdom and celestial guidance",
+                hero_cta: "Begin Your Journey",
+                horoscope_title: "Daily Horoscope",
+                horoscope_subtitle: "The stars have aligned to bring you cosmic wisdom for today",
+                planetary_title: "Current Planetary Positions",
+                planetary_subtitle: "See how the celestial bodies influence your energy today",
+                numerology_title: "Numerology Calculator",
+                numerology_subtitle: "Discover the mystical power of numbers in your life",
+                panchang_title: "Daily Panchang",
+                panchang_subtitle: "Today's auspicious timings and celestial influences according to Vedic calendar",
+                today_date: "Today's Date",
+                tithi_label: "Tithi:",
+                nakshatra_label: "Nakshatra:",
+                yoga_label: "Yoga:",
+                karana_label: "Karana:",
+                sunrise_sunset: "Sunrise & Sunset",
+                sunrise_label: "Sunrise:",
+                sunset_label: "Sunset:",
+                day_duration: "Day Duration:",
+                moonrise_label: "Moonrise:",
+                moonset_label: "Moonset:",
+                auspicious_times: "Auspicious Times",
+                abhijit_muhurat: "Abhijit Muhurat:",
+                brahma_muhurat: "Brahma Muhurat:",
+                godhuli_muhurat: "Godhuli Muhurat:",
+                inauspicious_times: "Inauspicious Times",
+                rahu_kaal: "Rahu Kaal:",
+                yamaganda: "Yamaganda:",
+                gulika_kaal: "Gulika Kaal:",
+                daily_guidance: "Daily Guidance",
+                guidance_text: "Today is favorable for spiritual practices, meditation, and seeking divine blessings. Avoid starting new ventures during Rahu Kaal. Wear white or light colors for positive energy.",
+                lucky_direction: "Lucky Direction:",
+                lucky_color_today: "Lucky Color:",
+                avoid_direction: "Avoid Direction:",
+                moon_phase: "Moon Phase",
+                moon_sign: "Moon in Sign:",
+                moon_influence: "Influence:",
+                moon_influence_text: "Emotional sensitivity and intuition heightened",
+                birth_date_label: "Date of Birth:",
+                full_name_label: "Full Name (as on birth certificate):",
+                reveal_numbers_btn: "Reveal My Numbers",
+                vastu_title: "Vastu Shastra Consultancy",
+                vastu_subtitle: "Harmonize your living space with ancient Vedic architecture principles",
+                book_consultation_btn: "Book Consultation",
+                vastu_compass_title: "Vastu Direction Compass",
+                contact_expert_title: "Contact Our Vastu Expert",
+                expert_description: "Certified Vastu consultant with 17+ years of experience in harmonizing spaces for prosperity and well-being",
+                whatsapp_btn: "WhatsApp: +91 94096 28107",
+                email_btn: "Email: monarkastrology@gmail.com",
+                instagram_btn: "Follow on Instagram",
+                consultation_rates_title: "Consultation Rates",
+                online_consultation: "Online Consultation:",
+                site_visit: "Site Visit:",
+                construction_planning: "Construction Planning:"
+            },
+            hi: {
+                nav_home: "होम",
+                nav_panchang: "पंचांग",
+                nav_horoscope: "राशिफल",
+                nav_numerology: "अंकज्योतिष",
+                nav_vastu: "वास्तु",
+                nav_contact: "संपर्क",
+                hero_title: "अपनी ब्रह्मांडीय नियति को खोलें",
+                hero_subtitle: "सितारों के रहस्यों की खोज करें और प्राचीन ज्ञान और आकाशीय मार्गदर्शन के माध्यम से अपना सच्चा रास्ता खोजें",
+                hero_cta: "अपनी यात्रा शुरू करें",
+                horoscope_title: "दैनिक राशिफल",
+                horoscope_subtitle: "सितारे आज आपके लिए ब्रह्मांडीय ज्ञान लाने के लिए संरेखित हुए हैं",
+                planetary_title: "वर्तमान ग्रह स्थितियां",
+                planetary_subtitle: "देखें कि आकाशीय पिंड आज आपकी ऊर्जा को कैसे प्रभावित करते हैं",
+                numerology_title: "अंकज्योतिष कैलकुलेटर",
+                numerology_subtitle: "अपने जीवन में संख्याओं की रहस्यमय शक्ति की खोज करें",
+                panchang_title: "दैनिक पंचांग",
+                panchang_subtitle: "वैदिक कैलेंडर के अनुसार आज के शुभ समय और आकाशीय प्रभाव",
+                today_date: "आज की तारीख",
+                tithi_label: "तिथि:",
+                nakshatra_label: "नक्षत्र:",
+                yoga_label: "योग:",
+                karana_label: "करण:",
+                sunrise_sunset: "सूर्योदय और सूर्यास्त",
+                sunrise_label: "सूर्योदय:",
+                sunset_label: "सूर्यास्त:",
+                day_duration: "दिन की अवधि:",
+                moonrise_label: "चंद्रोदय:",
+                moonset_label: "चंद्रास्त:",
+                auspicious_times: "शुभ समय",
+                abhijit_muhurat: "अभिजीत मुहूर्त:",
+                brahma_muhurat: "ब्रह्म मुहूर्त:",
+                godhuli_muhurat: "गोधूलि मुहूर्त:",
+                inauspicious_times: "अशुभ समय",
+                rahu_kaal: "राहु काल:",
+                yamaganda: "यमगंड:",
+                gulika_kaal: "गुलिका काल:",
+                daily_guidance: "दैनिक मार्गदर्शन",
+                guidance_text: "आज आध्यात्मिक अभ्यास, ध्यान और दिव्य आशीर्वाद प्राप्त करने के लिए अनुकूल है। राहु काल के दौरान नए उपक्रम शुरू करने से बचें। सकारात्मक ऊर्जा के लिए सफेद या हल्के रंग पहनें।",
+                lucky_direction: "भाग्यशाली दिशा:",
+                lucky_color_today: "भाग्यशाली रंग:",
+                avoid_direction: "बचने योग्य दिशा:",
+                moon_phase: "चंद्र कला",
+                moon_sign: "चंद्रमा राशि में:",
+                moon_influence: "प्रभाव:",
+                moon_influence_text: "भावनात्मक संवेदनशीलता और अंतर्ज्ञान बढ़ा हुआ",
+                birth_date_label: "जन्म तिथि:",
+                full_name_label: "पूरा नाम (जन्म प्रमाण पत्र के अनुसार):",
+                reveal_numbers_btn: "मेरी संख्याएं प्रकट करें",
+                vastu_title: "वास्तु शास्त्र परामर्श",
+                vastu_subtitle: "प्राचीन वैदिक वास्तुकला सिद्धांतों के साथ अपने रहने की जगह को सामंजस्य में लाएं",
+                book_consultation_btn: "परामर्श बुक करें",
+                vastu_compass_title: "वास्तु दिशा कम्पास",
+                contact_expert_title: "हमारे वास्तु विशेषज्ञ से संपर्क करें",
+                expert_description: "समृद्धि और कल्याण के लिए स्थानों को सामंजस्य में लाने में 17+ वर्षों के अनुभव के साथ प्रमाणित वास्तु सलाहकार",
+                whatsapp_btn: "व्हाट्सऐप: +91 94096 28107",
+                email_btn: "ईमेल: monarkastrology@gmail.com",
+                instagram_btn: "इंस्टाग्राम पर फॉलो करें",
+                consultation_rates_title: "परामर्श दरें",
+                online_consultation: "ऑनलाइन परामर्श:",
+                site_visit: "साइट विजिट:",
+                construction_planning: "निर्माण योजना:"
+            },
+            gu: {
+                nav_home: "હોમ",
+                nav_panchang: "પંચાંગ",
+                nav_horoscope: "રાશિફળ",
+                nav_numerology: "અંકજ્યોતિષ",
+                nav_vastu: "વાસ્તુ",
+                nav_contact: "સંપર્ક",
+                hero_title: "તમારી બ્રહ્માંડીય નિયતિ ખોલો",
+                hero_subtitle: "તારાઓના રહસ્યોની શોધ કરો અને પ્રાચીન જ્ઞાન અને આકાશીય માર્ગદર્શન દ્વારા તમારો સાચો માર્ગ શોધો",
+                hero_cta: "તમારી યાત્રા શરૂ કરો",
+                horoscope_title: "દૈનિક રાશિફળ",
+                horoscope_subtitle: "તારાઓ આજે તમારા માટે બ્રહ્માંડીય જ્ઞાન લાવવા માટે સંરેખિત થયા છે",
+                planetary_title: "વર્તમાન ગ્રહ સ્થિતિઓ",
+                planetary_subtitle: "જુઓ કે આકાશીય પિંડો આજે તમારી ઊર્જાને કેવી રીતે પ્રભાવિત કરે છે",
+                numerology_title: "અંકજ્યોતિષ કેલ્ક્યુલેટર",
+                numerology_subtitle: "તમારા જીવનમાં સંખ્યાઓની રહસ્યમય શક્તિ શોધો",
+                panchang_title: "દૈનિક પંચાંગ",
+                panchang_subtitle: "વૈદિક કેલેન્ડર અનુસાર આજના શુભ સમય અને આકાશીય પ્રભાવો",
+                today_date: "આજની તારીખ",
+                tithi_label: "તિથિ:",
+                nakshatra_label: "નક્ષત્ર:",
+                yoga_label: "યોગ:",
+                karana_label: "કરણ:",
+                sunrise_sunset: "સૂર્યોદય અને સૂર્યાસ્ત",
+                sunrise_label: "સૂર્યોદય:",
+                sunset_label: "સૂર્યાસ્ત:",
+                day_duration: "દિવસની અવધિ:",
+                moonrise_label: "ચંદ્રોદય:",
+                moonset_label: "ચંદ્રાસ્ત:",
+                auspicious_times: "શુભ સમય",
+                abhijit_muhurat: "અભિજીત મુહૂર્ત:",
+                brahma_muhurat: "બ્રહ્મ મુહૂર્ત:",
+                godhuli_muhurat: "ગોધૂલિ મુહૂર્ત:",
+                inauspicious_times: "અશુભ સમય",
+                rahu_kaal: "રાહુ કાળ:",
+                yamaganda: "યમગંડ:",
+                gulika_kaal: "ગુલિકા કાળ:",
+                daily_guidance: "દૈનિક માર્ગદર્શન",
+                guidance_text: "આજે આધ્યાત્મિક અભ્યાસ, ધ્યાન અને દિવ્ય આશીર્વાદ મેળવવા માટે અનુકૂળ છે. રાહુ કાળ દરમિયાન નવા ઉપક્રમો શરૂ કરવાનું ટાળો. સકારાત્મક ઊર્જા માટે સફેદ અથવા હળવા રંગો પહેરો.",
+                lucky_direction: "ભાગ્યશાળી દિશા:",
+                lucky_color_today: "ભાગ્યશાળી રંગ:",
+                avoid_direction: "ટાળવાની દિશા:",
+                moon_phase: "ચંદ્ર કળા",
+                moon_sign: "ચંદ્ર રાશિમાં:",
+                moon_influence: "પ્રભાવ:",
+                moon_influence_text: "ભાવનાત્મક સંવેદનશીલતા અને અંતર્જ્ઞાન વધેલું",
+                birth_date_label: "જન્મ તારીખ:",
+                full_name_label: "સંપૂર્ણ નામ (જન્મ પ્રમાણપત્ર મુજબ):",
+                reveal_numbers_btn: "મારી સંખ્યાઓ પ્રગટ કરો",
+                vastu_title: "વાસ્તુ શાસ્ત્ર સલાહ",
+                vastu_subtitle: "પ્રાચીન વૈદિક આર્કિટેક્ચર સિદ્ધાંતો સાથે તમારી રહેવાની જગ્યાને સુમેળ કરો",
+                book_consultation_btn: "સલાહ બુક કરો",
+                vastu_compass_title: "વાસ્તુ દિશા કંપાસ",
+                contact_expert_title: "અમારા વાસ્તુ નિષ્ણાતનો સંપર્ક કરો",
+                expert_description: "સમૃદ્ધિ અને કલ્યાણ માટે જગ્યાઓને સુમેળ કરવામાં 17+ વર્ષોના અનુભવ સાથે પ્રમાણિત વાસ્તુ સલાહકાર",
+                whatsapp_btn: "વ્હાટ્સએપ: +91 94096 28107",
+                email_btn: "ઇમેઇલ: monarkastrology@gmail.com",
+                instagram_btn: "ઇન્સ્ટાગ્રામ પર ફોલો કરો",
+                consultation_rates_title: "સલાહ દરો",
+                online_consultation: "ઓનલાઇન સલાહ:",
+                site_visit: "સાઇટ વિઝિટ:",
+                construction_planning: "બાંધકામ આયોજન:"
+            }
+        };
+        let currentLanguage = 'en';
+        // Zodiac signs data
+        const zodiacSigns = {
+            aries: { dates: "Mar 21 - Apr 19", element: "Fire", planet: "Mars", emoji: "♈" },
+            taurus: { dates: "Apr 20 - May 20", element: "Earth", planet: "Venus", emoji: "♉" },
+            gemini: { dates: "May 21 - Jun 20", element: "Air", planet: "Mercury", emoji: "♊" },
+            cancer: { dates: "Jun 21 - Jul 22", element: "Water", planet: "Moon", emoji: "♋" },
+            leo: { dates: "Jul 23 - Aug 22", element: "Fire", planet: "Sun", emoji: "♌" },
+            virgo: { dates: "Aug 23 - Sep 22", element: "Earth", planet: "Mercury", emoji: "♍" },
+            libra: { dates: "Sep 23 - Oct 22", element: "Air", planet: "Venus", emoji: "♎" },
+            scorpio: { dates: "Oct 23 - Nov 21", element: "Water", planet: "Pluto", emoji: "♏" },
+            sagittarius: { dates: "Nov 22 - Dec 21", element: "Fire", planet: "Jupiter", emoji: "♐" },
+            capricorn: { dates: "Dec 22 - Jan 19", element: "Earth", planet: "Saturn", emoji: "♑" },
+            aquarius: { dates: "Jan 20 - Feb 18", element: "Air", planet: "Uranus", emoji: "♒" },
+            pisces: { dates: "Feb 19 - Mar 20", element: "Water", planet: "Neptune", emoji: "♓" }
+        };
+        // Horoscope predictions
+        const horoscopePredictions = {
+            aries: "Your fiery energy is at its peak today. Take bold action on that project you've been considering. The stars favor courage and initiative.",
+            taurus: "Stability and comfort are your themes today. Focus on building solid foundations and enjoying life's simple pleasures.",
+            gemini: "Communication flows effortlessly today. It's an excellent time for networking, learning, and sharing your ideas with others.",
+            cancer: "Your intuition is heightened today. Trust your emotional instincts and nurture the relationships that matter most to you.",
+            leo: "Your natural charisma shines brightly today. Step into the spotlight and let your creativity and leadership abilities flourish.",
+            virgo: "Attention to detail serves you well today. Focus on organization, health, and practical matters that need your careful touch.",
+            libra: "Balance and harmony are within reach today. Seek beauty, fairness, and cooperation in all your interactions.",
+            scorpio: "Your transformative power is strong today. Dive deep into mysteries and embrace the changes that are calling to you.",
+            sagittarius: "Adventure and expansion beckon today. Broaden your horizons through travel, learning, or philosophical exploration.",
+            capricorn: "Your ambition and discipline are your greatest assets today. Focus on long-term goals and building your reputation.",
+            aquarius: "Innovation and humanitarian efforts are highlighted today. Think outside the box and work for the greater good.",
+            pisces: "Your compassion and creativity flow freely today. Trust your dreams and artistic inspirations to guide you forward."
+        };
+        // Lucky elements for each sign
+        const luckyElements = {
+            aries: { color: "Red", number: "9", stone: "Diamond" },
+            taurus: { color: "Green", number: "6", stone: "Emerald" },
+            gemini: { color: "Yellow", number: "5", stone: "Agate" },
+            cancer: { color: "Silver", number: "2", stone: "Pearl" },
+            leo: { color: "Gold", number: "1", stone: "Ruby" },
+            virgo: { color: "Navy Blue", number: "6", stone: "Sapphire" },
+            libra: { color: "Pink", number: "7", stone: "Opal" },
+            scorpio: { color: "Deep Red", number: "8", stone: "Topaz" },
+            sagittarius: { color: "Purple", number: "3", stone: "Turquoise" },
+            capricorn: { color: "Brown", number: "10", stone: "Garnet" },
+            aquarius: { color: "Blue", number: "4", stone: "Amethyst" },
+            pisces: { color: "Sea Green", number: "12", stone: "Aquamarine" }
+        };
+
+
+        // Generate cosmic background
+        function generateCosmicBackground() {
+            const cosmicBg = document.getElementById('cosmicBg');
+            
+            // Generate floating symbols
+            const symbols = ['✨', '🌟', '⭐', '🌙', '☀️', '🔮', '♈', '♉', '♊', '♋', '♌', '♍', '♎', '♏', '♐', '♑', '♒', '♓'];
+            
+            for (let i = 0; i < 30; i++) {
+                const symbol = document.createElement('div');
+                symbol.className = 'floating-symbol';
+                symbol.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+                symbol.style.left = Math.random() * 100 + '%';
+                symbol.style.top = Math.random() * 100 + '%';
+                symbol.style.animationDelay = Math.random() * 8 + 's';
+                symbol.style.animationDuration = (Math.random() * 4 + 6) + 's';
+                cosmicBg.appendChild(symbol);
+            }
+            
+            // Generate mystical orbs
+            for (let i = 0; i < 15; i++) {
+                const orb = document.createElement('div');
+                orb.className = 'mystical-orb';
+                orb.style.width = (Math.random() * 100 + 50) + 'px';
+                orb.style.height = orb.style.width;
+                orb.style.left = Math.random() * 100 + '%';
+                orb.style.top = Math.random() * 100 + '%';
+                orb.style.animationDelay = Math.random() * 4 + 's';
+                cosmicBg.appendChild(orb);
+            }
+        }
+        // Generate horoscope cards
+        function generateHoroscopeCards() {
+            const horoscopeGrid = document.getElementById('horoscopeGrid');
+            
+            Object.keys(zodiacSigns).forEach(sign => {
+                const signData = zodiacSigns[sign];
+                const prediction = horoscopePredictions[sign];
+                const lucky = luckyElements[sign];
+                
+                const card = document.createElement('div');
+                card.className = 'horoscope-card';
+                card.innerHTML = `
+                    <h3>
+                        <span class="sign-emoji">${signData.emoji}</span>
+                        ${sign.charAt(0).toUpperCase() + sign.slice(1)}
+                    </h3>
+                    <div class="horoscope-dates">${signData.dates}</div>
+                    <div class="horoscope-text">${prediction}</div>
+                    <div class="lucky-info">
+                        <h4>Today's Lucky Elements:</h4>
+                        <p><strong>Color:</strong> ${lucky.color}</p>
+                        <p><strong>Number:</strong> ${lucky.number}</p>
+                        <p><strong>Stone:</strong> ${lucky.stone}</p>
+                    </div>
+                `;
+                
+                horoscopeGrid.appendChild(card);
+            });
+        }
+
+
+
+        // Numerology calculator
+        function calculateNumerology() {
+            const fullName = document.getElementById('fullName').value.trim();
+            const birthDate = document.getElementById('numerologyDate').value;
+            const resultDiv = document.getElementById('numerologyResult');
+            
+            if (!fullName || !birthDate) {
+                alert('Please enter both your full name and birth date.');
+                return;
+            }
+            
+            // Calculate Life Path Number
+            const date = new Date(birthDate);
+            const day = date.getDate();
+            const month = date.getMonth() + 1;
+            const year = date.getFullYear();
+            
+            function reduceToSingleDigit(num) {
+                while (num > 9 && num !== 11 && num !== 22 && num !== 33) {
+                    num = num.toString().split('').reduce((sum, digit) => sum + parseInt(digit), 0);
+                }
+                return num;
+            }
+            
+            const lifePathNumber = reduceToSingleDigit(day + month + year);
+            
+            // Calculate Expression Number (from name)
+            const letterValues = {
+                'A
